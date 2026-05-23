@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(0.1 0 0);
+  --foreground: oklch(0.98 0 0);
+  --card: oklch(0.15 0.01 250 / 0.4);
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.15 0 0);
+  --popover-foreground: oklch(0.98 0 0);
+  --primary: oklch(0.7 0.2 250); /* Neon Blueish */
+  --primary-foreground: oklch(0.1 0 0);
+  --secondary: oklch(0.6 0.2 300); /* Neon Purpleish */
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.2 0 0);
+  --muted-foreground: oklch(0.7 0 0);
+  --accent: oklch(0.6 0.2 280);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.6 0.2 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.25 0 0 / 0.5);
+  --input: oklch(0.2 0 0);
+  --ring: oklch(0.7 0.2 250);
+  --radius: 1rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-neon-blue: #00d2ff;
+  --color-neon-purple: #9d50bb;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground selection:bg-primary/30;
+    font-family: var(--font-sans);
+    background-image: 
+      radial-gradient(circle at 0% 0%, oklch(0.7 0.2 250 / 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 100% 100%, oklch(0.6 0.2 300 / 0.05) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+.glass {
+  @apply bg-card backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
+}
+
+.neon-border {
+  @apply border border-primary/50 shadow-[0_0_15px_rgba(0,210,255,0.3)];
+}
+
+.neon-text-blue {
+  text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+}
+
+.neon-text-purple {
+  text-shadow: 0 0 10px rgba(157, 80, 187, 0.5);
+}
